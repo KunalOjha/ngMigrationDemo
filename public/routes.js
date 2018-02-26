@@ -43,27 +43,21 @@ app.config(function($routeProvider) {
       }
     })
     .when('/admin/users/:id', {
-      controller: 'userDetailsCtrl',
-      templateUrl: 'admin/userDetails.html',
-      controllerAs: 'vm',
+      template: '<user-details all-users="$resolve.allUsers"></user-details>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allUsers: routeResolvers.allUsers
       }
     })
     .when('/users', {
-      controller: 'userListCtrl',
-      templateUrl: 'admin/userlist.html',
-      controllerAs: 'vm',
+      template: '<user-list all-users="$resolve.allUsers"></user-list>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allUsers: routeResolvers.allUsers
       }
     })
     .when('/admin/createusers', {
-      controller: 'createUsersCtrl',
-      templateUrl: 'admin/createUsers.html',
-      controllerAs: 'vm',
+      template: '<create-users></create-users>',
       resolve:  {
         admin: routeResolvers.requireAdmin
       }
@@ -76,25 +70,19 @@ app.config(function($routeProvider) {
       }
     })
     .when('/profile', {
-      controller: 'profileCtrl',
-      templateUrl: 'profile/profile.html',
-      controllerAs: 'vm',
+      template: '<profile></profile>',
       resolve: {
         userProfile: routeResolvers.loggedIn,
       }
     })
     .when('/createsession', {
-      controller: 'createNewSessionCtrl',
-      templateUrl: 'home/createNewSession.html',
-      controllerAs: 'vm',
+      template: '<create-new-session contact-id="8" user-sessions="$resolve.Sessions"></create-new-session>',
       resolve: {
-        userSessions: routeResolvers.userSessions,
+        userSessions: routeResolvers.allSessions,
       }
     })
     .when('/login', {
-      controller: 'loginCtrl',
-      templateUrl: 'security/login.html',
-      controllerAs: 'vm',
+      template: '<login></login>',
       resolve: {
         currentAuth: routeResolvers.waitForAuth
       }

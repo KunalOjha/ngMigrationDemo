@@ -1,5 +1,7 @@
-angular.module('app').controller('profileCtrl', 
-    function($location, toastr, currentIdentity) {
+angular.module('app').component('profile', { 
+  templateUrl: '/profile/profile.html',
+  bindings: {},
+  controller: function($location, toastr, currentIdentity) {
   
   this.profile = angular.copy(currentIdentity.currentUser);
     
@@ -12,4 +14,5 @@ angular.module('app').controller('profileCtrl',
     $location.path('/home');
   }
   
+  }
 })
